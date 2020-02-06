@@ -1,4 +1,4 @@
-package com.deyuan.gmalluser;
+package com.deyuan.gmall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
