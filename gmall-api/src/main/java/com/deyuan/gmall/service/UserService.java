@@ -1,7 +1,7 @@
-package com.deyuan.gmall.user.service;
+package com.deyuan.gmall.service;
 
-import com.deyuan.gmall.user.bean.UmsMember;
-import com.deyuan.gmall.user.bean.UmsMemberReceiveAddress;
+import com.deyuan.gmall.bean.UmsMember;
+import com.deyuan.gmall.bean.UmsMemberReceiveAddress;
 
 import java.util.List;
 

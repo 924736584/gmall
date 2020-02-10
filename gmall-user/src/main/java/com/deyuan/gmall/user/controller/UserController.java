@@ -1,12 +1,10 @@
 package com.deyuan.gmall.user.controller;
 
-import com.deyuan.gmall.user.bean.UmsMember;
-import com.deyuan.gmall.user.bean.UmsMemberReceiveAddress;
+import com.deyuan.gmall.bean.UmsMember;
+import com.deyuan.gmall.bean.UmsMemberReceiveAddress;
 import com.deyuan.gmall.user.service.impl.UserServiceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 

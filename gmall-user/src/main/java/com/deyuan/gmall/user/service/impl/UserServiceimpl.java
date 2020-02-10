@@ -1,10 +1,11 @@
 package com.deyuan.gmall.user.service.impl;
 
-import com.deyuan.gmall.user.bean.UmsMember;
-import com.deyuan.gmall.user.bean.UmsMemberReceiveAddress;
+import com.deyuan.gmall.bean.UmsMember;
+import com.deyuan.gmall.bean.UmsMemberReceiveAddress;
+import com.deyuan.gmall.service.UserService;
 import com.deyuan.gmall.user.mapper.UmsMemberReceiveAddressMapper;
 import com.deyuan.gmall.user.mapper.UserMapper;
-import com.deyuan.gmall.user.service.UserService;
+import com.deyuan.gmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;

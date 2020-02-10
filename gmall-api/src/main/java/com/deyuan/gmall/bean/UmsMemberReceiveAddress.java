@@ -1,10 +1,6 @@
-package com.deyuan.gmall.user.bean;
+package com.deyuan.gmall.bean;
 
-import javax.persistence.Id;
-import java.io.Serializable;
-
-public class UmsMemberReceiveAddress implements Serializable {
-   @Id
+public class UmsMemberReceiveAddress {
     private Long id;
 
     private Long memberId;
