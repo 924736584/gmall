@@ -250,3 +250,128 @@ dubbo环境搭建与zookeeper安装：
 1.安装tomcat，将dubbo-admin部署到tomcat中
 首先需要先解压zookeeper然后启动tomcat
 否者启动就会报错
+将user项目拆分未user-server 和user-web
+2,引入dubbo框架
+将服务的@Service配置为dubbo的@server
+3.配置服务端的dubbo配置
+```properties
+#dubbo的配置
+#dubbo中的服务名称
+dubbo.application.name=user-service
+#dubbo的协议名称
+dubbo.protocol.name=dubbo
+#dubbo注册中心zookeeper
+dubbo.registry.address=192.168.36.131:2181
+dubbo.registry.protocol=zookeeper
+#dubbo的服务扫描路径
+dubbo.scan.base-packages=com.deyuan.gmall
+```
+4.启动服务（所有的接口都必须序列化不序列化会报错）可以引入一个 依赖解决这个报错
+```xml
+ <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+```
+
+
+客户端使用
+
+1.将@Autowired改为 @Reference
+2dubbo在进行dubbo通讯的时候需要实现序列化接口（封装数据对象）
+3，dubbo的服务consumer在三之类每间隔一秒进行一次重新访问，默认一秒钟超时，三次访问之后直接抛异常，在开发阶段可以将consumer时间延长，方便断点调试
+设置超时时间
+dubbo.consumer.timeout=600000
+设置是否检查服务存在
+dubbo.consumer.check=false
+
+
+spu与sku
+spu：（Satndard Product Unit）标准化产品单元，上坪信息集合的最小单位，是一组可反复复用易检索的标准化集合，该集合描述了一个产品的特性。
+sku：（stock Keeping Unilt）(库存单元) ，即库存进出计量的基本单位，可以是以件，盒等为单位sku这是对大型连锁超市DC配送中心物流管理的一个必要的方法
+现在已经被引申为产品统一编写的简称
+### 前后端分离
+1，准备阶段
+渲染：thymeleaf，JSP，freemarker
+2.前后端分离
+JVM,spring,maven,idea
+Nodejs,vue,npm,vscode
+3.安装nodeJs
+查看是否成功
+node -v
+安装npm
+npm -install
+解压前端项目（gmall-admin）
+conf
+配置前端服务的ip和前端访问数据的后端的服务的ip地址
+dev.env.js 前端访问后端的数据服务地址
+index.js 前端的服务器端口
+用npm命令编译和启动前端项目
+npm run  dev
+### 跨域
+数据传到前端没有数据读出：原因在控制层添加
+@CrossOrigin注解解决实际上是添加头信息
+
+![image-20200212220727525](E:\SpringBoot_WorkSpace\gmall\image-20200212220727525.png)
+
+### 分布式文件存储
+#### 搭建：
+
+0.
+安装环境：
+```shell script
+yum -y install gcc-c++ -y
+yum -y install libevent
+yum install perl*
+yum -y install zlib zlib-devel pcre pcre-devel gcc gcc-c++ openssl opssl-devel libevent libevent-devel perl unzip net-tools wget
+
+```
+1.fdfs的依赖库
+Libfastcommon
+1.解压，
+2.进入文件libfastcommon执行./make.sh ，在执行./make.sh install
+3.注意将/usr/lib64/libfastcommon.so 拷贝到 /usr/lib中
+
+ 
+2.fastdfs 软件（tracker ,stroage）
+配置tracker
+配置stroage
+tracker环境:
+依赖：Gcc,libevent,perl
+详见：
+https://blog.csdn.net/prcyang/article/details/89946190
+
+3.FastDFS-neinx-module
+fdfs整合
+
+
+4.nginx
+依赖：pcre-devel zlib-devel
+
+配置环境遇到的问题：
+一.ngx_fastdfs_module 找不到
+巨坑！！！！！！！！
+解决思路：
+1.检查是否插件名称写错了
+2.nginx -V 查看模块是否安装
+3.如果都有不报错检查Config配置文件
+当前问题：
+::原因是参考文档错误导致配置文件（/usr/local/fastdfs-nginx-module-1.20/src.config）错误
+
+二.nginx启动问题
+1.检查端口是否被占用(#netstat -ntp) ;
+2.检查文件配置和进程启动（#nginx -t/ #ps -elf|grep nginx）;
+正常一般是有一个主进程，和其他工作进程(至少一个)
+当前问题没有工作进程：
+解决 方法：
+将(/usr/local/fastdfs-5.11/conf/mime.types)拷贝到/etc/fdfs中
+还是不能解决。。修改了mod_nginx_module.conf文件中放开了[group1]的配置
+一定不要忘了配置完重启fastdfs相关的服务
+然后就可以启动nginx了
+
+
+
+
+
+

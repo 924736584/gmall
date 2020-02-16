@@ -1,6 +1,15 @@
 package com.deyuan.gmall.bean;
 
-public class PmsBaseAttrInfo {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.io.Serializable;
+import java.util.List;
+
+public class PmsBaseAttrInfo implements Serializable {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
 
     private String attrName;
@@ -8,6 +17,17 @@ public class PmsBaseAttrInfo {
     private Long catalog3Id;
 
     private String isEnabled;
+
+    @Transient
+    private List<PmsBaseAttrValue> attrValueList;
+
+    public List<PmsBaseAttrValue> getAttrValueList() {
+        return attrValueList;
+    }
+
+    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
+        this.attrValueList = attrValueList;
+    }
 
     public Long getId() {
         return id;

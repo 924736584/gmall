@@ -1,9 +1,10 @@
 package com.deyuan.gmall.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class OmsOrder {
+public class OmsOrder implements Serializable {
     private Long id;
 
     private Long memberId;

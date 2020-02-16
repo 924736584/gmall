@@ -1,6 +1,15 @@
 package com.deyuan.gmall.bean;
 
-public class PmsBaseAttrValue {
+import org.apache.ibatis.annotations.Options;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+public class PmsBaseAttrValue implements Serializable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     private String valueName;

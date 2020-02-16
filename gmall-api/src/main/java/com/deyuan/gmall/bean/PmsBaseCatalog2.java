@@ -1,11 +1,28 @@
 package com.deyuan.gmall.bean;
 
-public class PmsBaseCatalog2 {
+import com.sun.javafx.beans.IDProperty;
+
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.List;
+
+public class PmsBaseCatalog2 implements Serializable {
+    @Id
     private Integer id;
 
     private String name;
 
     private Integer catalog1Id;
+
+    private List<PmsBaseCatalog3> catalog3s;
+
+    public List<PmsBaseCatalog3> getCatalog3s() {
+        return catalog3s;
+    }
+
+    public void setCatalog3s(List<PmsBaseCatalog3> catalog3s) {
+        this.catalog3s = catalog3s;
+    }
 
     public Integer getId() {
         return id;

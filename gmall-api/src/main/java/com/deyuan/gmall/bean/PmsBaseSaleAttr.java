@@ -1,6 +1,16 @@
 package com.deyuan.gmall.bean;
 
-public class PmsBaseSaleAttr {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.io.Serializable;
+import java.security.SecureRandom;
+import java.util.List;
+
+public class PmsBaseSaleAttr implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

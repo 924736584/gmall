@@ -1,6 +1,15 @@
 package com.deyuan.gmall.bean;
 
-public class PmsProductInfo {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.io.Serializable;
+import java.util.List;
+
+public class PmsProductInfo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String productName;
@@ -10,6 +19,30 @@ public class PmsProductInfo {
     private Long catalog3Id;
 
     private Long tmId;
+
+
+    @Transient
+    private List<PmsProductSaleAttr> spuSaleAttrList;
+
+    @Transient
+    private List<PmsProductImage> pmsProductImageList;
+
+    public List<PmsProductSaleAttr> getSpuSaleAttrList() {
+        return spuSaleAttrList;
+    }
+
+    public void setSpuSaleAttrList(List<PmsProductSaleAttr> spuSaleAttrList) {
+        this.spuSaleAttrList = spuSaleAttrList;
+    }
+
+    public List<PmsProductImage> getPmsProductImageList() {
+        return pmsProductImageList;
+    }
+
+    public void setPmsProductImageList(List<PmsProductImage> pmsProductImageList) {
+        this.pmsProductImageList = pmsProductImageList;
+    }
+
 
     public Long getId() {
         return id;
